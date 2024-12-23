@@ -6,7 +6,7 @@ include '../connection.php';
 $name = $_POST['name'];
 $type = $_POST['type'];
 $image = $_POST['image'];
-//$base64code = $_POST['base64code']; // data image
+$base64code = $_POST['base64code']; // data image
 
 $sql = "INSERT INTO asset
         SET
@@ -18,8 +18,8 @@ $sql = "INSERT INTO asset
 $result = $connect->query($sql);
 
 if ($result) {
-    // save image
-    // file_put_contents("../image/".$image, base64_decode($base64code));
+    // save to folder image
+    file_put_contents("../image/" . $image, base64_decode($base64code));
 
     echo json_encode(array("success" => true));
 } else {

@@ -7,7 +7,9 @@ $search = $_POST['search'];
 
 $sql = "SELECT * FROM asset
         WHERE
-        name LIKE '%$search%'
+        name LIKE '%$search%' 
+        OR
+        type LIKE '%$search%'
         ";
 
 $result = $connect->query($sql);

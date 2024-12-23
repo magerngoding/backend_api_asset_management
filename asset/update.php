@@ -7,7 +7,7 @@ $name = $_POST['name'];
 $type = $_POST['type'];
 $old_image = $_POST['old_image'];
 $new_image = $_POST['new_image'];
-// $new_base64code = $_POST['new_base64code']; // data image
+$new_base64code = $_POST['new_base64code']; // data image
 
 $sql = "UPDATE asset
         SET
@@ -24,7 +24,7 @@ if ($result) {
     if ($old_image != $new_image) {
         // image name if diffrence or if has new image
         unlink("../image/" . $old_image); // hapus image dari penyimapanan
-        // file_put_contents("../image/" . $new_image, base64_decode($new_base64code));
+        file_put_contents("../image/" . $new_image, base64_decode($new_base64code));
     }
 
     echo json_encode(array("success" => true));
